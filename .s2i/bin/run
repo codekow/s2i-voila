@@ -1,0 +1,20 @@
+#/bin/bash
+
+clone_remote(){
+    if [ "${GIT_URL}" = "example" ]; then
+        GIT_URL=https://github.com/voila-dashboards/voila.git
+        NOTEBOOK_PATH=${NOTBOOK_PATH:-remote/notebooks}
+    fi
+
+    echo GIT_URL=${GIT_URL}
+    echo NOTEBOOK_PATH=${NOTEBOOK_PATH}
+
+    [ ! -e ./remote ] && git clone ${GIT_URL} remote
+}
+
+run_app(){
+    voila --Voila.ip=0.0.0.0 --port=8080 --template=material ${NOTEBOOK_PATH}
+}
+
+[ "x${GIT_URL}" != "x" ] && clone_remote
+run_app

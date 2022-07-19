@@ -1,0 +1,10 @@
+bqplot
+ipyupload
+ipyvolume
+ipywidgets
+matplotlib
+numpy-stl
+pandas
+scipy
+voila
+voila-material
